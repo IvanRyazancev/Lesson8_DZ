@@ -13,31 +13,49 @@
 9 встречается 3 раза
 */
 
-int[] num = new int[8]{3, 5, 9, 6, 4, 2, 5, 3};
-Console.Write("Массив для проверки наличия чисел в массиве: " + String.Join(" ", num)+".");
-Console.WriteLine();
-Console.Write("Сгенерированный массив: ");
-Console.WriteLine();
-int[] count = new int[8];
+Console.Write("Введите количество элементов последовательности: ");
+int n = int.Parse(Console.ReadLine()!);
 
-int[] array = new int[10];
-for (int i = 0; i < array.Length; i++)
-{
-    array[i] = new Random().Next(0, 10);
-   
-    Console.Write($" { array[i]}, ");
-}
+void FillArray(int[] collection)
 
-for (int i = 0; i < num.Length; i++)
 {
-    for (int j = 0; j < array.Length; j++)
+    int length = n;
+    int index = 0;
+    while (index < length)
     {
-            if (array[j] == num[i])
-                 count[i]++;
+        collection[index] = new Random().Next(1, 10);
+        index++;
     }
 }
-    Console.WriteLine();
-for (int i = 0; i < num.Length; i++)
+
+void PrintArray(int[] collection)
 {
-    Console.WriteLine($" Число {num[i]} было в массиве {count[i]} раз ");
+    int count = n;
+    int position = 0;
+    Console.WriteLine("Исходный массив: ");
+    while (position < count)
+    {        
+        Console.Write($" " + collection[position] + " ");
+        position++;
+    }
+}
+
+int[] array = new int[n];
+
+FillArray(array);
+PrintArray(array);
+Console.WriteLine();
+
+
+for (int i = 0; i <= array.Length - 1; i++)
+{        
+    int count = 0;    
+    for (int j = 0; j < array.Length; j++)
+    {    
+        if (array[i] == array[j])
+        {
+            count++;            
+        }    
+    } 
+    Console.WriteLine($"Число  {array[i]} встречается  {count} раз ");    
 }
